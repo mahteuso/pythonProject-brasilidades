@@ -5,8 +5,9 @@ class Cpf:
     def __init__(self, cpf, cnh):
         self.cpf = str(cpf)
         self.cnh = str(cnh)
-        if self.cpf_validates():
+        if self.cpf_validates() and self.cnh_validate():
             self.cpf_format()
+            self.cnh_format()
         else:
             raise ValueError('Invalid value, enter another number!')
 
