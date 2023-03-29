@@ -1,30 +1,44 @@
 from validate_docbr import CPF, CNH
 
 
-class Cpf:
-    def __init__(self, cpf, cnh):
-        self.cpf = str(cpf)
-        self.cnh = str(cnh)
-        if self.cpf_validates() and self.cnh_validate():
-            self.cpf_format()
-            self.cnh_format()
+class Validate:
+    @staticmethod
+    def document_create(document):
+        document = document.replace(" ", "")
+        cnh = CNH()
+        if cnh.validate(document):
+            return Cnh(document)
+        cpf = CPF()
+        if cpf.validate(document):
+            return Cpf(document)
+
         else:
-            raise ValueError('Invalid value, enter another number!')
+            raise ValueError('Invalid value, enter another number')
 
-    def __str__(self):
-        return f' Your cpf: {self.cpf_format()} and your cnh: {self.cnh_format()}'
 
-    def cpf_validates(self):
-        new_cpf = CPF()
-        return new_cpf.validate(self.cpf)
+class Cpf(Validate):
+    def __init__(self, document):
+        super().__init__()
+        self.cpf = str(document)
+        self.cpf_format()
 
     def cpf_format(self):
         cpf = CPF()
         return cpf.mask(self.cpf)
 
-    def cnh_validate(self):
-        cnh = CNH()
-        return cnh.validate(self.cnh)
+    def __str__(self):
+        return f' Your cpf: >>>({self.cpf_format()})<<< its valid!'
+
+
+class Cnh(Validate):
+    def __init__(self, document):
+        super().__init__()
+        self.cnh = str(document)
+        self.cnh_format()
+
     def cnh_format(self):
         cnh = CNH()
         return cnh.mask(self.cnh)
+
+    def __str__(self):
+        return f' Your cnh: >>>({self.cnh_format()})<<< its valid!'

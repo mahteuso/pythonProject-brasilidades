@@ -1,14 +1,10 @@
-from cpf import Cpf
+from cpf import Validate
 
-cpf = 29838352861
-cnh = '04506588800'
+#cpf = '29838352861'
+#cnh = '04506588800'
 
-object_cpf = Cpf(cpf, cnh)
-
-print(object_cpf)
+document = input("enter with Cpf or Cnh: ")
 
 
-
-
-
-
+new_object = Validate.document_create(document)
+print(new_object)
