@@ -1,6 +1,6 @@
 import re
 
-
+'''
 # simple template
 template = "[0-9][a-z]{2}[0-9]"
 text = "123 acb 1bc3 999 bca"
@@ -15,12 +15,17 @@ e_mail = "asdk m_ateuso@hotmail.com.br 2143"
 verify = re.search(email_template, e_mail)
 verify = verify.group()
 print(verify)
-
+'''
 # telephone template
 phone_template = "[0-9]{2}[0-9]{4,5}[0-9]{4}"
 phone_test = "15981521625"
-verify = re.search(phone_template, phone_test)
-verify = verify.group()
+verify = re.findall(phone_template, phone_test)
+print(len(verify))
+print(verify)
+verify = str(verify).strip("['']")
+print(len(verify))
+
+
 print(verify)
 
 
