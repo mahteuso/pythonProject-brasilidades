@@ -1,5 +1,6 @@
 from cpf import Validate
-
+from date_BR import DateBr
+'''
 #cpf = '29838352861'
 #cnh = '04506588800'
 count = 0
@@ -15,4 +16,7 @@ while count < 3:
     else:
         var = 'CNH'
     count += 1
+'''
 
+user = DateBr()
+print(user.register_user)
