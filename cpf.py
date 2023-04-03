@@ -1,6 +1,6 @@
 from validate_docbr import CPF, CNH
 import re
-
+import requests
 
 class Validate:
     @staticmethod
@@ -25,6 +25,8 @@ class Validate:
         verify = str(verify).strip("['']")
         if document == verify:
             return Email(document)
+        if len(document) == 8:
+            return CEP(document)
 
         else:
             raise ValueError('Invalid value, enter another number')
@@ -82,3 +84,32 @@ class Email:
 
     def __str__(self):
         return f'Your e-mail >>>{self.email}<<< its valid!'
+
+class CEP:
+    def __init__(self, document):
+        self.cep = str(document)
+        self.cep_mask()
+
+
+    def cep_validate(self):
+        if len(self.cep) == 8:
+            self.cep.strip(' ')
+            return True
+        else:
+            return False
+
+    def cep_mask(self):
+        return f'{self.cep[:5]}-{self.cep[5:]}'
+
+    def __str__(self):
+        return f'Your Cep >>>{self.access_cpf()}<<< its valid!'
+
+    def access_cpf(self):
+        url = f"viacep.com.br/ws/{self.cep}/json/ "
+        r = requests.get(url)
+
+        a = r.json()
+        for l, m in a.items():
+            print(f'{l}: {m}')
+
+
