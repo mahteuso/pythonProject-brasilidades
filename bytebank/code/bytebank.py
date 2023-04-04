@@ -32,3 +32,21 @@ class Employee:
         return f'Employee: {self.name}\n' \
                f'Age: {self.age()}\n' \
                f'Wage: {self.wage}'
+
+    def last_name(self):
+        complete_name = self.name.strip()
+        broken_name = complete_name.split(' ')
+        last_name = broken_name[-1]
+        return last_name
+
+
+    def is_a_partner(self):
+        last_name = ["Hoffart", "Maria", "Laranjeira", "Leite"]
+        return (self.wage >= 100000) and (self.last_name() in last_name)
+
+    def decrease_wage(self):
+        if self.is_a_partner():
+            decrease_wage = self.wage * 0.9
+            return decrease_wage
+
+
