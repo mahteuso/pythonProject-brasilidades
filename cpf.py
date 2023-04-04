@@ -104,7 +104,7 @@ class CEP:
     def __str__(self):
         return f'Your Cep >>>{self.access_cpf()}<<< its valid!'
 
-    def access_cpf(self):
+    def access_cep(self):
         url = f"viacep.com.br/ws/{self.cep}/json/ "
         r = requests.get(url)
 
