@@ -2,6 +2,7 @@ from validate_docbr import CPF, CNH
 import re
 import requests
 
+
 class Validate:
     @staticmethod
     def document_create(document):
@@ -85,6 +86,7 @@ class Email:
     def __str__(self):
         return f'Your e-mail >>>{self.email}<<< its valid!'
 
+
 class CEP:
     def __init__(self, document):
         self.cep = str(document)
@@ -102,10 +104,10 @@ class CEP:
         return f'{self.cep[:5]}-{self.cep[5:]}'
 
     def __str__(self):
-        return f'Your Cep >>>{self.access_cpf()}<<< its valid!'
+        return f'Your Cep >>>{self.cep}<<< its valid!'
 
-    def access_cep(self):
-        url = f"viacep.com.br/ws/{self.cep}/json/ "
+    def requests(self):
+        url = f"https://viacep.com.br/ws/{self.cep}/json/"
         r = requests.get(url)
 
         a = r.json()

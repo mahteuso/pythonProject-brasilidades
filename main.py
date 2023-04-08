@@ -4,7 +4,7 @@ from cpf import Validate
 #cnh = '04506588800'
 count = 0
 var = "phone_number"
-
+'''
 while count < 3:
     print('')
     document = input(f"enter with your {var}:  ")
@@ -15,4 +15,9 @@ while count < 3:
     else:
         var = 'CNH'
     count += 1
+'''
 
+document = '18160000'
+new_object = Validate.document_create(document)
+print(new_object)
+print(new_object.requests())
